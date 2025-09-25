@@ -19,6 +19,7 @@
 #define snprintf _snprintf
 #endif
 
+
 // ---- CONFIG ----
 #define FIREBASE_HOST L"bear-alert-828c1-default-rtdb.firebaseio.com"
 #define DB_PATH       L"/Bear_Alert/GPS_KEY.json"   // node we want
@@ -664,3 +665,4 @@ int CVICALLBACK fTest (int panel, int control, int event,
 	}
 	return 0;
 }
+
