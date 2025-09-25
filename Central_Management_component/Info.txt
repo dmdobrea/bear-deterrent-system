@@ -1,0 +1,3 @@
+Cum se poate citi cheia:
+	  
+	https://bear-alert-828c1-default-rtdb.firebaseio.com/Bear_Alert/GPS_KEY.json
