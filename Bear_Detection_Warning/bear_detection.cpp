@@ -237,6 +237,22 @@ torch::Tensor scale_boxes(const std::vector<int>& img1_shape, torch::Tensor& box
     return boxes;
 }
 
+// Define some colors for classes
+cv::Scalar get_color(int class_id) 
+{
+    static cv::Scalar colors[] = 
+    {
+        cv::Scalar(255, 0, 0),   // Blue
+        cv::Scalar(0, 255, 0),   // Green
+        cv::Scalar(0, 0, 255),   // Red
+        cv::Scalar(255, 255, 0), // Cyan
+        cv::Scalar(255, 0, 255), // Magenta
+        cv::Scalar(0, 255, 255)  // Yellow
+    };
+    
+    return colors[class_id % 6]; // cycle if >6 classes
+}
+
 // Classes 
 std::vector<std::string> classes {"person", "bicycle", "car", "motorcycle", "airplane", "bus", "train", "truck", "boat", "traffic light", "fire hydrant",
                                   "stop sign", "parking meter", "bench", "bird", "cat", "dog", "horse", "sheep", "cow", "elephant", "bear", "zebra",
@@ -508,22 +524,6 @@ std::string gstreamer_pipeline (int capture_width, int capture_height, int displ
            std::to_string(display_height) + ", format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink";
 }
 
-// Define some colors for classes
-cv::Scalar get_color(int class_id) 
-{
-    static cv::Scalar colors[] = 
-    {
-        cv::Scalar(255, 0, 0),   // Blue
-        cv::Scalar(0, 255, 0),   // Green
-        cv::Scalar(0, 0, 255),   // Red
-        cv::Scalar(255, 255, 0), // Cyan
-        cv::Scalar(255, 0, 255), // Magenta
-        cv::Scalar(0, 255, 255)  // Yellow
-    };
-    
-    return colors[class_id % 6]; // cycle if >6 classes
-}
-
 // Write a string into Firebase at the given path
 int writeStringToFirebase(const char *url, const char *value) 
 {
@@ -605,4 +605,3 @@ int writeIntToFirebase(const char *url, int value)
 
     return success;
 }
-
