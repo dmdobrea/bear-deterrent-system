@@ -44,10 +44,8 @@ class OffboardControl(Node):
 		self.status_sub   = self.create_subscription( VehicleStatus,        '/fmu/out/vehicle_status_v1',      self.vehicle_status_callback, qos_profile)
 		
 		# get real-time information (position/status) of the UAV
-		# self.real_pos_sub = self.create_subscription( VehicleLocalPosition, '/fmu/out/vehicle_local_position', self.vehicle_real_callback, qos_profile)
 		self.gps_sub     = self.create_subscription ( VehicleGlobalPosition, '/fmu/out/vehicle_global_position', self.gps_callback, qos_profile)
-		# self.attitude_sub = self.create_subscription( VehicleAttitude, '/fmu/out/vehicle_attitude',   self.attitude_callback,       qos_profile)
-         
+		         
 		# from teleop_twist_XBOX node
 		self.offboard_velocity_sub = self.create_subscription( Twist, '/offboard_velocity_cmd', self.offboard_velocity_callback,    qos_profile)
 		self.my_action_sub         = self.create_subscription( UInt8, '/action_message',        self.action_message_callback,       qos_profile)
