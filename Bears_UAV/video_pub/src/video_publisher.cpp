@@ -1,5 +1,3 @@
-// https://www.theconstruct.ai/how-to-integrate-opencv-with-a-ros2-c-node/
-
 #include <chrono>
 #include <functional>
 #include <memory>
